@@ -11,7 +11,7 @@ var port = process.env.PORT || 3000;
 app.use(bodyparser.json());
 
 //return Hello World
-app.get('/', function(req, res) {
+app.get('/*', function(req, res) {
   res.status(200).send('Hello World');
 });
 
