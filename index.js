@@ -12,7 +12,7 @@ app.use(bodyparser.json());
 
 //return Hello World
 app.get('/*', function(req, res) {
-  res.status(200).send('Hello World');
+  res.status(200).send('Hello Beautiful World');
 });
 
 //start up server
