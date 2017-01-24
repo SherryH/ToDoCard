@@ -32,11 +32,25 @@ exports.createTodos = function(req, res) {
 exports.updateTodo = function(req, res) {
   Todo.findOneAndUpdate({_id: req.params.todo_id}, req.body, {new: true}) //return the modified doc
   .then(function(todo){
+    //since todo is returned, status 200
+    //if no content, status 204
     res.status(200).send(todo);
-  });
+  })
+  .catch(function(err) {
+      console.error('Error updating todos', err);
+    });
   // Todo.findOneAndUpdate({_id:req.params.todo_id}, req.body, function(err, todo){
   //   console.log(todo);
   //   res.status(200).send(todo);
   // });
 };
 
+exports.deleteTodo = function(req, res) {
+  Todo.remove({_id: req.params.todo_id})
+  .then(function(todo) {
+    res.status(204).end();
+  })
+  .catch(function(err) {
+      console.error('Error deleting todos', err);
+  });
+};

@@ -16,8 +16,6 @@ angular.module('todoApp',[])
 
   //addTodo function
   $scope.addTodo = function() {
-    console.log($scope.todo.title);
-    console.log($scope.todo.description);
     console.log($scope.todo);
     $http({
       method: 'POST',
@@ -26,7 +24,7 @@ angular.module('todoApp',[])
     }).then(function successCallback(res) {
       $scope.todo={}; //set todo.title="", todo.description=""
       $scope.todos.push(res.data);
-      console.log(res);
+      console.log(res.data);
 
     }, function errorCallback(res) {
       console.error('Error adding todos', res);
@@ -41,7 +39,7 @@ angular.module('todoApp',[])
     $http({
       method: 'PUT',
       url: '/api/todos/'+ todo._id,
-      data: JSON.stringify({completed: todo.completed})
+      data: JSON.stringify({completed: todo.completed}) //server will get this info in req.body
     })
     .then(function successCallback(res) {
       console.log('complete updated!', res.data);
@@ -51,4 +49,21 @@ angular.module('todoApp',[])
     // save to database
     //add the crossline on css
   };
+
+  $scope.deleteTodo = function(todo) {
+    //send a delete request to server to remove this todo
+    $http({
+      method: 'DELETE',
+      url: '/api/todos/' + todo._id,
+    })
+    .then(function successCallback(res) {
+      //update the view
+      $scope.todos = $scope.todos.filter(function(eachtodo) {
+        return (eachtodo._id!==todo._id);
+      });
+    }, function errorCallback(res) {
+      console.error('Error deleting todo', res);
+    });
+  };
+
 });

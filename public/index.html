@@ -46,7 +46,7 @@
           <form>
           <div class="form-group">
             <input class="form-control" type="checkbox" ng-model="todo.completed" ng-change="toggleCompleted(todo)">
-            <button class="btn btn-danger" >X</button>
+            <button class="btn btn-danger" ng-click="deleteTodo(todo)">X</button>
 
           </div>
           </form>
