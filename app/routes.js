@@ -28,6 +28,16 @@ app.post('/api/todos', function(req, res) {
   //});
 });
 
+app.get('/api/todos', function(req, res) {
+  Todo.find({})
+  .then(function(todos) {
+    res.status(200).send(todos);
+  })
+  .catch(function(err) {
+      console.error('Error retrieving todos', err);
+    });
+});
+
 app.get('/*', function(req, res) {
   res.status(200).sendFile(publicPath + '/index.html');
 });
