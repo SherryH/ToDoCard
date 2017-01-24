@@ -4,6 +4,7 @@ var path = require('path');
 var mongoose = require('mongoose');
 var routes = require('./app/routes');
 
+//How to hide username and password??
 var dbUrl = 'mongodb://root:root@ds127399.mlab.com:27399/todocard';
 
 //define an app

@@ -1,0 +1,24 @@
+{
+  "name": "todocard",
+  "description": "A todo card set",
+  "main": "index.js",
+  "authors": [
+    "SherryH"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/SherryH/ToDoCard",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.1",
+    "bootstrap": "^3.3.7",
+    "angular-route": "^1.6.1"
+  }
+}
