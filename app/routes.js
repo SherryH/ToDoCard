@@ -13,6 +13,11 @@ app.post('/api/todos', handler.createTodos);
 
 app.get('/api/todos', handler.getTodos);
 
+//params are introduced with a colon
+app.put('/api/todos/:todo_id', handler.updateTodo);
+
+//app.delete('/api/todos/:todo_id', handler.deleteTodo);
+
 app.get('/*', function(req, res) {
   res.status(200).sendFile(publicPath + '/index.html');
 });

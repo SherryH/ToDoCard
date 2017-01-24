@@ -28,3 +28,15 @@ exports.createTodos = function(req, res) {
     });
   //});
 };
+
+exports.updateTodo = function(req, res) {
+  Todo.findOneAndUpdate({_id: req.params.todo_id}, req.body, {new: true}) //return the modified doc
+  .then(function(todo){
+    res.status(200).send(todo);
+  });
+  // Todo.findOneAndUpdate({_id:req.params.todo_id}, req.body, function(err, todo){
+  //   console.log(todo);
+  //   res.status(200).send(todo);
+  // });
+};
+

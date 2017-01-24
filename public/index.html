@@ -26,21 +26,33 @@
         </form>
       </div>
 
-      <div class="todoarea">
-
-        <!--start of a todo card-->
-        <div class="panel panel-info" ng-repeat="todo in todos">
-          <div class="panel-heading">
-            <h3 class="panel-title">{{todo.title}}</h3>
+      <!--start of a todo card-->
+      <div class="row todoarea" ng-repeat="todo in todos">
+        <div class="col-md-11 col-xs-11">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <span class="done-{{todo.completed}}">
+                <h3 class="panel-title">{{todo.title}}</h3>
+              </span>
+            </div>
+            <div class="panel-body">
+              <span class="done-{{todo.completed}}">
+                {{todo.description}}
+              </span>
+            </div>
           </div>
-          <div class="panel-body">
-            {{todo.description}}
+        </div> <!--end of long todo col-->
+        <div class="col-md-1 col-xs-1">
+          <form>
+          <div class="form-group">
+            <input class="form-control" type="checkbox" ng-model="todo.completed" ng-change="toggleCompleted(todo)">
+            <button class="btn btn-danger" >X</button>
 
           </div>
-        </div>
-        <!--end of a todo card-->
+          </form>
+        </div><!--end of todo control col-->
 
-      </div> <!--end of todolist display area-->
+      </div> <!--end of a todo card component-->
 
 
     </div> <!---end of container-->
