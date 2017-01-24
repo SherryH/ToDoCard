@@ -4,7 +4,8 @@
   "description": "A todo card set",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "heroku-postbuild": "bower install"
   },
   "repository": {
     "type": "git",
