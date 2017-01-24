@@ -2,6 +2,9 @@
   "name": "todocard",
   "version": "1.0.0",
   "description": "A todo card set",
+  "engines": {
+    "node": "7.4.0"
+  },
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
