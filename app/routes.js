@@ -1,6 +1,6 @@
 var path = require('path');
 var Todo = require('./todo-model');
-var mongoose = require('mongoose');
+var handler = require('./request-handlers');
 
 
 
@@ -9,34 +9,9 @@ module.exports = function(app, db) {
   var publicPath = path.join(rootPath, '/public');
 
 //app.get('/api/todos');
-app.post('/api/todos', function(req, res) {
-  //create a todo entry in the db
-  console.log('received request');
-  //db.once('open', function() { //comment out this line as otherwise connection will not open.....
-  console.log('db opened');
-    Todo.create({
-      title: req.body.title,
-      description: req.body.description,
-      completed: false
-    })
-    .then(function(todo) {
-      res.status(201).send(todo);
-    })
-    .catch(function(err) {
-      console.error('Error creating todos', err);
-    });
-  //});
-});
+app.post('/api/todos', handler.createTodos);
 
-app.get('/api/todos', function(req, res) {
-  Todo.find({})
-  .then(function(todos) {
-    res.status(200).send(todos);
-  })
-  .catch(function(err) {
-      console.error('Error retrieving todos', err);
-    });
-});
+app.get('/api/todos', handler.getTodos);
 
 app.get('/*', function(req, res) {
   res.status(200).sendFile(publicPath + '/index.html');
