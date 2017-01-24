@@ -13,38 +13,38 @@
       <div class="jumbotron">
         <h1>To Do Card Set</h1>
         {{title}}
-        Beautiful New World!! :D
+        Beautiful New World!! :D :D
       </div>
 
       <div class="row todoarea">
-        <input class="form-control" type="text" placeholder="Add todo">
+        <form >
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Add todo title" ng-model="todo.title" autofocus>
+            <textarea class="form-control" name="description" id="" cols="30" rows="5" placeholder="Add description" ng-model="todo.description"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary pull-right" ng-click="addTodo()">Add</button>
+        </form>
       </div>
 
       <div class="todoarea">
+
         <!--start of a todo card-->
-        <div class="panel panel-info">
+        <div class="panel panel-info" ng-repeat="todo in todos">
           <div class="panel-heading">
-            <h3 class="panel-title">Panel title</h3>
+            <h3 class="panel-title">{{todo.title}}</h3>
           </div>
           <div class="panel-body">
-            Panel content
-          </div>
-        </div>
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <h3 class="panel-title">Panel title</h3>
-          </div>
-          <div class="panel-body">
-            Panel content
+            {{todo.description}}
+
           </div>
         </div>
         <!--end of a todo card-->
-      </div>
+
+      </div> <!--end of todolist display area-->
 
 
-    </div>
-  </div>
-
+    </div> <!---end of container-->
+  </div> <!---end of todoController-->
 
 
   <script src="libs/angular/angular.min.js"></script>

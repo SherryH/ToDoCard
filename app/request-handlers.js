@@ -3,7 +3,7 @@ var Todo = require('./todo-model');
 exports.getTodos = function(req, res) {
   Todo.find({})
   .then(function(todos) {
-    res.status(200).send(todos);
+    res.status(200).json(todos);
   })
   .catch(function(err) {
       console.error('Error retrieving todos', err);
@@ -21,7 +21,7 @@ exports.createTodos = function(req, res) {
       completed: false
     })
     .then(function(todo) {
-      res.status(201).send(todo);
+      res.status(201).json(todo);
     })
     .catch(function(err) {
       console.error('Error creating todos', err);
